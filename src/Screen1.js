@@ -10,8 +10,7 @@ export default function Screen1({route, navigation}) {
     //         <Text>{"Home"}</Text>
     //     </TouchableOpacity>
    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-       <Text>{"Hellllo"}</Text>
-      <Text>Details Screen</Text>
+      <Text>Screen1</Text>
       <Text>itemId: {JSON.stringify(itemId)}</Text>
       {/* <Text>otherParam: {JSON.stringify(otherParam)}</Text> */}
       <Button
