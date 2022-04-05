@@ -1,0 +1,133 @@
+import { View, Text, SafeAreaView, Image, TextInput, TouchableOpacity, Keyboard } from 'react-native'
+import React, { useState } from 'react'
+import styles from './style'
+import { NavigationContainer } from '@react-navigation/native'
+
+export default function Login({ navigation }) {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [showPassword, setShowPassword] = useState(false)
+    const [showVisiblePassword, setShowVisiblePassword] = useState(true)
+    const [emailConfirm, setEmailConfirm] = useState(false)
+    const [passwordConfirm, setPasswordConfirm] = useState(false)
+    const [showEmail, setShowEmail] = useState(false)
+    const eyePress = () => {
+        setShowVisiblePassword(!showVisiblePassword)
+    }
+    const validatePassword = () => {
+        let reg = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+        if (!reg.test(password)) {
+            if (password.length == 0)
+                setPasswordConfirm(false)
+            else
+                setPasswordConfirm(true)
+        }
+        else {
+            setPasswordConfirm(false)
+        }
+    }
+    const validateEmail = () => {
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/
+        if (reg.test(email) == false) {
+            // console.log("Email Incorrect")
+            if (email.length == 0)
+                setEmailConfirm(false)
+            else
+                setEmailConfirm(true)
+        }
+        else {
+            // console.log('Email correct')
+            // setEmail()
+            setEmailConfirm(false)
+        }
+    }
+    const handleNavigation = () => {
+        navigation.navigate("Register")
+    }
+    return (
+        <View style={styles.container}>
+            <Image
+                source={require('./assets/images/login.png')}
+                style={styles.bgimage}
+            />
+            <Text style={styles.loginHeaderText}>{"Login"}</Text>
+            <Text style={styles.enterDetailsText}>{"Enter your Details to Continue"}</Text>
+            <View style={styles.emailBlock}>
+                {showEmail && <Text style={styles.text}>{"Email"}</Text>}
+                <TextInput
+                    onChangeText={(text) => {
+                        if (text.length != 0)
+                            setShowEmail(true)
+                        else setShowEmail(false)
+                        setEmail(text)
+                        setEmailConfirm(false)
+                    }}
+                    onBlur={() => { validateEmail() }}
+                    placeholder='Enter Email'
+                    style={[styles.blockText, { marginBottom: 10, fontWeight: 'bold', padding: 5 }]}
+                />
+
+            </View>
+             <Text style={styles.errorMessage}>{emailConfirm  ? "Invalid Email": '       '}</Text>
+            <View style={[styles.emailBlock,{marginTop:0}]}>
+                {showPassword && <Text style={styles.text}>{"Password"}</Text>}
+                <TouchableOpacity
+                activeOpacity={0.8}
+                    style={styles.visiblity}
+                    onPress={eyePress}>
+                    <Image
+                        source={require('./assets/images/visible.png')}
+                        style={styles.eyeImage}
+                    />
+                </TouchableOpacity>
+                <TextInput
+                    placeholder='Enter Password'
+                    onChangeText={(text) => {
+                        if (text.length != 0)
+                            setShowPassword(true)
+                        else setShowPassword(false)
+                        setPassword(text)
+                        setPasswordConfirm(false)
+                    }}
+                    onBlur={() => {
+                        validatePassword()
+                    }}
+                    style={[styles.blockText, { marginBottom: 10, fontWeight: 'bold', padding: 5 }]}
+                    onSubmitEditing={() => {
+                        Keyboard.dismiss
+                    }}
+                    secureTextEntry={showVisiblePassword}
+                />
+                {/* {password.length > 0 && passwordConfirm &&
+                <View style = {{ flexDirection:'column'}}>
+                    <Text style={styles.errorPasswordMessage}>
+                        {"Password must be contain at least "}</Text>
+                        <Text style={styles.errorPasswordMessage}>{"1 Upper Case Character, 1 Lower Case Character,"}
+                        </Text>
+                        <Text style={styles.errorPasswordMessage}>{"1 Numeric Character and 1 Special Character"}
+                        </Text>
+                    </View>} */}
+            </View>
+            <TouchableOpacity
+            activeOpacity={0.8}>
+                <Text style={styles.forgotPasswordText}>{"Forgot Password?"}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+            activeOpacity={0.8}
+            style={styles.loginButton}>
+                <Text style={styles.loginButtonText}>
+                    {"Login"}
+                </Text>
+            </TouchableOpacity>
+            <View style={styles.bottom}>
+                <Text style={styles.text}>{"Not Registered Yet?"}</Text>
+                <TouchableOpacity 
+                activeOpacity={0.8}
+                onPress={handleNavigation}>
+                    <Text style={[styles.text, { fontWeight: 'bold', marginLeft:0 }]}>{'Register'}</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    )
+}
