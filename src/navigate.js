@@ -5,11 +5,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Screen1 from './Screen1'
 import HomeScreen from './HomeScreen'
 import Screen2 from './Screen2'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 
 export default function navigate() {
 
 
 const RootStack = createNativeStackNavigator()
+const TabNavigator = createBottomTabNavigator()
 
   return (
     <NavigationContainer>

@@ -6,7 +6,7 @@ export default function Screen2({navigation}) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         {/* <Text>{"hello"}</Text> */}
       <TouchableOpacity 
-      onPress={()=>(navigation.navigate('Screen1'))}>
+      onPress={()=>(navigation.navigate('Screen1',{itemId:69,otherParam:'this is a Param'}))}>
           <Text>{"Screen1"}</Text>
           </TouchableOpacity>
           <TouchableOpacity 
