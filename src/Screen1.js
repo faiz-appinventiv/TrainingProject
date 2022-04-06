@@ -18,6 +18,7 @@ export default function Screen1({ route, navigation }) {
             console.log(navigation)
             navigation.push('Screen1', {
               itemId: Math.floor(Math.random() * 100),
+              otherParam:'this is not a Param'
             })
           }
           } />

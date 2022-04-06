@@ -10,7 +10,7 @@ export default function Screen2({navigation}) {
           <Text>{"Screen1"}</Text>
           </TouchableOpacity>
           <TouchableOpacity 
-      onPress={()=>(navigation.navigate('Home'))}>
+      onPress={()=>(navigation.push('Home'))}>
             <Text>{"Home"}</Text>
           </TouchableOpacity>
     </View>
