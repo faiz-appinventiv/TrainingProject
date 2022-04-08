@@ -6,7 +6,7 @@ export default function Screen1({ route, navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <TouchableOpacity
-        onPress={() => (navigation.push("Home"))}>
+        onPress={() => (navigation.navigate("Home"))}>
         <Text>{"Home"}</Text>
       </TouchableOpacity>
         <Text>Screen1</Text>
@@ -16,7 +16,7 @@ export default function Screen1({ route, navigation }) {
           title="Go to Screen1... again"
           onPress={() => {
             console.log(navigation)
-            navigation.push('Screen1', {
+            navigation.navigate('Screen1', {
               itemId: Math.floor(Math.random() * 100),
               otherParam:'this is not a Param'
             })

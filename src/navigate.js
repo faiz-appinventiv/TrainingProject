@@ -21,6 +21,6 @@ const TabNavigator = createBottomTabNavigator()
             <RootStack.Screen name='Screen1' component={Screen1}/>
             <RootStack.Screen name='Screen2' component={Screen2}/>
         </RootStack.Navigator>
-    </NavigationContainer>
+        </NavigationContainer>
   )
 }

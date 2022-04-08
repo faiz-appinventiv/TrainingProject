@@ -7,12 +7,14 @@ export default function HomeScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <TouchableOpacity
-                onPress={() => {navigation.navigate('Screen1',{
-                    itemId: 66,
+                onPress={() => {navigation.navigate('Screen2',{
+                    img:"https://source.unsplash.com/1024x768/?nature",
                     // otherParam: 'anything you want here',
                   })}}>
-                <Text>{"Screen1"}</Text>
+                <Text>{"Screen2"}</Text>
             </TouchableOpacity>
+            <Button title="Go back" onPress={() => navigation.goBack()} />
+
             {/* <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Details Screen</Text>
       <Text>itemId: {JSON.stringify()}</Text>

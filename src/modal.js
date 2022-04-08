@@ -1,8 +1,8 @@
-import { View, Text, TextInput, SafeAreaView, StyleSheet, TouchableOpacity, FlatList, Image, Alert, Modal, ScrollView } from 'react-native'
+import { View, Text, TextInput, SafeAreaView, StyleSheet, TouchableOpacity, FlatList, Image, Alert, Modal, ScrollView,KeyboardAvoidingView } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './flatListColor'
 import RenderItemFlatlist from './renderItemFlatlist'
-import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/KeyboardAvoidingView'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default function formStudent() {
     let listRef = useRef(null)
@@ -175,7 +175,7 @@ export default function formStudent() {
     }
     
     return (
-        <SafeAreaView style={styles.container}>
+        <KeyboardAvoidingView style={styles.container}>
             {/* <KeyboardAvoidingView > */}
             {/* <ScrollView> */}
             <Modal
@@ -183,9 +183,9 @@ export default function formStudent() {
             // supportedOrientations={('portrait', 'portrait-upside-down', 'landscape', 'landscape-left', 'landscape-right')}
                 transparent
                 onRequestClose={() => {setModalVisible(false)}}
-                animationType={"fade"}
+                animationType={"slide"}
                 visible={modalVisibility}>
-                <View style={styles.modalContainer}>
+                <KeyboardAvoidingView behavior='padding' style={styles.modalContainer}>
                     <View style={styles.header}>
                         <Text style={styles.listTag}>{"Input Form"}</Text>
                     </View>
@@ -259,7 +259,7 @@ export default function formStudent() {
                             <Text>{"Cancel"}</Text>
                         </TouchableOpacity>
                     </View>
-                </View>
+                </KeyboardAvoidingView>
             </Modal>
             <View style={styles.header}>
                 <Text style={styles.listTag}>{"Student List"}</Text>
@@ -295,7 +295,7 @@ export default function formStudent() {
             {/* </ScrollView> */}
 
             {/* </KeyboardAvoidingView> */}
-        </SafeAreaView>
+        </KeyboardAvoidingView>
     )
 }
 

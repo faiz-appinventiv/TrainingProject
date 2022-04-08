@@ -1,12 +1,15 @@
 import { StyleSheet } from "react-native"
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        // flex: 1,
+        paddingTop:35,
         backgroundColor: '#beb8ef'
     },
     formContainer: {
-        flex: 0.3,
+        // flex: 0.3,
+        height:300,
         padding: 10,
+        // paddingVertical:50,
         border: 1,
         // margin: 10,
         // borderRadius: 10,
@@ -25,7 +28,7 @@ const styles = StyleSheet.create({
     },
     modalContainer: {
         flex:1,
-        justifyContent: "center",
+        justifyContent: "flex-end",
         // height:'30%',
         backgroundColor:'rgba(255, 255, 255, .3)',
         // marginBottom:10,
@@ -59,7 +62,8 @@ const styles = StyleSheet.create({
         color: 'red'
     },
     list: {
-        flex: 1,
+        // flex: 1,
+        height:700,
         padding: 10,
         borderWidth: 1,
         margin: 10,
@@ -105,7 +109,8 @@ const styles = StyleSheet.create({
         padding: 5
     },
     studentBlock: {
-        flex: 1,
+        // flex: 1,
+        // height:900, 
         padding: 10,
         borderWidth: 1,
         margin: 10,
